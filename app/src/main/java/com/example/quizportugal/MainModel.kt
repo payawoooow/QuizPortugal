@@ -1,7 +1,12 @@
 package com.example.quizportugal
 
+import android.app.Activity
+import android.content.Context
+import android.content.Intent
+import java.io.Serializable
 
-class MainModel() : IModel {
+
+class MainModel() : IModel, Serializable {
 
     var quizCount: Int = 0
     
@@ -14,7 +19,7 @@ class MainModel() : IModel {
     //各View側で渡したMainModelを受け取る処理
     override fun screenTransition(activity: Activity, context: Context): Unit {
 
-        var intent: Intent?
+        var intent: Intent? = null
 
         when (activity) {
             is ViewTitle -> {
@@ -26,22 +31,21 @@ class MainModel() : IModel {
             }
 
             is ViewQuiz -> {
-                if (quizCount > 10) {
-                    intent = Intent(context, ViewFinish::class.java)
+                intent = if (quizCount > 10) {
+                    Intent(context, ViewFinish::class.java)
+                } else {
+                    quizCount++
+                    Intent(context, ViewQuiz::class.java)
                 }
-
-                quizCount++
-                intent = Intent(context, ViewQuiz::class.java)
             }
 
             is ViewFinish -> {
-                intent = Intnet(context, ViewStart::class.java)
+                intent = Intent(context, ViewStart::class.java)
                 quizCount = 0
             }
         }
 
-        intent.putExtra("mainModel", this)
-
+        intent?.putExtra("mainModel", this)
         activity.startActivity(intent)
     }
 

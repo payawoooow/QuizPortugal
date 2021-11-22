@@ -1,5 +1,6 @@
 package com.example.quizportugal
 
+import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import java.util.*
@@ -15,17 +16,17 @@ class ViewTitle : AppCompatActivity() {
         //mainModel = intent?.extras?.getPracelable("mainModel")
         mainModel = intent.getSerializableExtra("mainModel") as IModel
         
-        this.timerAction()
+        this.timerAction(this)
     }
 
-    private fun timerAction(){
+    private fun timerAction(activity: Activity){
         //kotlinでできる簡単なタイマーイベントの実装
         //第一引数は何ミリセカンド後に実行するか
         //第二引数は何ミリセカンド間隔で実行するかを指定する
         //下記の例は、この記述の実行後10秒後に0ミリセカンド間隔でイベント発生
         //第三引数は処理を記述したラムダ式
         Timer().schedule(10 * 1000, 0) {
-            mainModel.screenTransition(this,this);
+            mainModel.screenTransition(activity,activity);
             //1回で終了
             this.cancel()
         }

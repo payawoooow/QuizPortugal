@@ -3,12 +3,16 @@ package com.example.quizportugal
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.util.Log
 import com.example.quizportugal.IDAO
+import java.io.File
+import java.io.FileOutputStream
+import java.io.InputStream
 
-const val DB_NAME_ASSET = "WordDB.db"
+const val DB_NAME_ASSET = "wordDB.db"
 const val DB_VERSION: Int = 1
 
-class DBHelper(context: Context, databaseName: String, factory: SQLiteDatabase.CursorFactory?, version: Int) : SQLiteOpenHelper(context, databaseName, factory, version) {
+class DBHelper(private val context: Context, databaseName: String, factory: SQLiteDatabase.CursorFactory?, version: Int) : SQLiteOpenHelper(context, databaseName, factory, version) {
 
     private val databasePath: File = context.getDatabasePath(databaseName)
  
@@ -21,12 +25,16 @@ class DBHelper(context: Context, databaseName: String, factory: SQLiteDatabase.C
     }
 
     override fun onUpgrade(database: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
-        if (oldVersion < newVersion) {
+        //if (oldVersion < newVersion) {
             //database?.execSQL("alter table SampleTable add column deleteFlag integer default 0")
-        }
+        //}
     }
 
-    private fun isDatabaseExists(): Boolean {
+    /**
+     * 最新のデータベースファイルが存在するか確認する
+     * 存在すればTrue　しなければFalse
+     */
+    private fun isLatestDBExists(): Boolean {
         val dbPath = databasePath.absolutePath
         var targetDB: SQLiteDatabase? = null
 
@@ -55,19 +63,23 @@ class DBHelper(context: Context, databaseName: String, factory: SQLiteDatabase.C
         return false
     }
 
+    /**
+     * データベースが初期化されていなければ初期化をする
+     */
     public fun tryInitializeDatabase() {
-        if (databasePath.exists() && isDatabaseExists()) {
+        if (databasePath.exists() && isLatestDBExists()) {
             return 
         }
 
         var db: SQLiteDatabase? = null
+        var targetDB: SQLiteDatabase? = null
 
         try {
-            db = this.readbaleDatabase
+            db = this.readableDatabase
             copyDatabaseFromAssets()
 
             val dbPath = databasePath.absolutePath
-            val targetDB: SQLiteDatabase? = SQLiteDatabase.OpenDatabase(dbPath, null, SQLiteDatabase.OPEN_READWRITE) ?: null
+            targetDB = SQLiteDatabase.openDatabase(dbPath, null, SQLiteDatabase.OPEN_READWRITE) ?: null
             targetDB?.version = DB_VERSION
         } catch (e: Exception) {
             Log.e("tryInitializeDatabase", e.toString())
@@ -77,11 +89,14 @@ class DBHelper(context: Context, databaseName: String, factory: SQLiteDatabase.C
         }
     }
 
+    /**
+     * データベースファイルをAssetsフォルダからAndroidのデータベースフォルダにコピーする
+     */
     private fun copyDatabaseFromAssets() {
         val input: InputStream = context.assets.open(DB_NAME_ASSET)
-        val output: FileOutputStream = FileOutputStream(databasePath.absolutePath)
+        val output = FileOutputStream(databasePath.absolutePath)
 
-        var buffer: ByteArray? = ByteArray(1024)
+        val buffer: ByteArray = ByteArray(1024)
         var size: Int
         while (true) {
             size = input.read(buffer)

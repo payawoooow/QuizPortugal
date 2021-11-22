@@ -10,7 +10,7 @@
         android:id="@+id/buttonAnswer4"
         android:layout_width="158dp"
         android:layout_height="82dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="32dp"
         android:text="お疲れ様です"
         android:textSize="16sp"
@@ -21,11 +21,12 @@
         android:id="@+id/buttonAnswer2"
         android:layout_width="158dp"
         android:layout_height="82dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="28dp"
         android:text="こんにちは"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="324dp" />
+        app:layout_constraintTop_toBottomOf="@+id/textPortugal" />
 
     <Button
         android:id="@+id/buttonAnswer3"
@@ -43,47 +44,55 @@
         android:id="@+id/buttonAnswer1"
         android:layout_width="158dp"
         android:layout_height="82dp"
+        android:layout_marginTop="48dp"
         android:text="ありがとう"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/buttonAnswer2"
+        app:layout_constraintHorizontal_bias="0.477"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="324dp" />
+        app:layout_constraintTop_toBottomOf="@+id/textPortugal" />
 
     <TextView
         android:id="@+id/textQuestion"
         android:layout_width="325dp"
         android:layout_height="111dp"
+        android:layout_marginTop="64dp"
         android:text="次のポルトガル語を日本語に訳すと？"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="75dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textPortugal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
         android:text="obbligato"
         android:textSize="34sp"
         app:layout_constraintStart_toStartOf="@+id/textQuestion"
-        tools:layout_editor_absoluteY="232dp" />
+        app:layout_constraintTop_toBottomOf="@+id/textQuestion" />
 
     <TextView
         android:id="@+id/textResult"
         android:layout_width="123dp"
         android:layout_height="52dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="60dp"
         android:text="◎正解"
         android:textColor="@color/design_default_color_error"
         android:textSize="34sp"
-        tools:layout_editor_absoluteX="44dp"
-        tools:layout_editor_absoluteY="577dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonAnswer3" />
 
     <Button
         android:id="@+id/buttonGoNext"
         android:layout_width="165dp"
         android:layout_height="58dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="60dp"
         android:text="次の問題へ"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="219dp"
-        tools:layout_editor_absoluteY="571dp" />
+        app:layout_constraintStart_toEndOf="@+id/textResult"
+        app:layout_constraintTop_toBottomOf="@+id/buttonAnswer4" />
 </androidx.constraintlayout.widget.ConstraintLayout>

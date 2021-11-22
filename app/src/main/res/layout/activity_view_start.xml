@@ -10,9 +10,10 @@
         android:id="@+id/buttonStart"
         android:layout_width="211dp"
         android:layout_height="68dp"
+        android:layout_marginTop="200dp"
         android:text="スタート"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="184dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
