@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ViewQuiz">
+
+    <Button
+        android:id="@+id/buttonAnswer4"
+        android:layout_width="158dp"
+        android:layout_height="82dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="32dp"
+        android:text="お疲れ様です"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonAnswer2" />
+
+    <Button
+        android:id="@+id/buttonAnswer2"
+        android:layout_width="158dp"
+        android:layout_height="82dp"
+        android:layout_marginEnd="32dp"
+        android:text="こんにちは"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="324dp" />
+
+    <Button
+        android:id="@+id/buttonAnswer3"
+        android:layout_width="158dp"
+        android:layout_height="82dp"
+        android:layout_marginTop="28dp"
+        android:text="ごめんなさい"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/buttonAnswer4"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonAnswer1" />
+
+    <Button
+        android:id="@+id/buttonAnswer1"
+        android:layout_width="158dp"
+        android:layout_height="82dp"
+        android:text="ありがとう"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/buttonAnswer2"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="324dp" />
+
+    <TextView
+        android:id="@+id/textQuestion"
+        android:layout_width="325dp"
+        android:layout_height="111dp"
+        android:text="次のポルトガル語を日本語に訳すと？"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="75dp" />
+
+    <TextView
+        android:id="@+id/textPortugal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="obbligato"
+        android:textSize="34sp"
+        app:layout_constraintStart_toStartOf="@+id/textQuestion"
+        tools:layout_editor_absoluteY="232dp" />
+
+    <TextView
+        android:id="@+id/textResult"
+        android:layout_width="123dp"
+        android:layout_height="52dp"
+        android:text="◎正解"
+        android:textColor="@color/design_default_color_error"
+        android:textSize="34sp"
+        tools:layout_editor_absoluteX="44dp"
+        tools:layout_editor_absoluteY="577dp" />
+
+    <Button
+        android:id="@+id/buttonGoNext"
+        android:layout_width="165dp"
+        android:layout_height="58dp"
+        android:text="次の問題へ"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="219dp"
+        tools:layout_editor_absoluteY="571dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

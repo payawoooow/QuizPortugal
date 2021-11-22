@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ViewFinish">
+
+    <TextView
+        android:id="@+id/textFinishCall"
+        android:layout_width="297dp"
+        android:layout_height="99dp"
+        android:text="Obrigado por seu  trabalho duro! "
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="103dp" />
+
+    <Button
+        android:id="@+id/buttonReturn"
+        android:layout_width="175dp"
+        android:layout_height="94dp"
+        android:text="最初に戻る"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/textFinishCall"
+        app:layout_constraintStart_toStartOf="@+id/textFinishCall"
+        tools:layout_editor_absoluteY="315dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
